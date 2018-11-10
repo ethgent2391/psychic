@@ -8,10 +8,12 @@ var chosen = [];
 function selection(){
     rand = Math.floor(Math.random()*options.length);
     letter = options[rand];
+    chosen = [];
     return letter;
 }
 
 selection();
+alert("press a key");
 
 document.onkeyup = function(event){
     var key = event.key.toLowerCase();
@@ -23,18 +25,17 @@ if (options.indexOf(key) == -1)
     else 
     gameleft--;
     document.getElementById("gsf").innerHTML = chosen;
+    document.getElementById("gleft").innerHTML = gameleft;
     
     
     if (gameleft == 0){
         losses++;
         gameleft = 9;
-        chosen = [];
         document.getElementById("losses").innerHTML = losses;
         selection();
     }
     if (key==letter){
         wins++;
-        chosen = [];
         document.getElementById("wins").innerHTML = wins;
         alert("Good guess!");
         selection();
